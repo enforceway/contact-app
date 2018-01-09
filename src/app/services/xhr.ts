@@ -1,14 +1,19 @@
 import { Injectable } from "@angular/core";
-import { Http, RequestOptions, Headers } from "@angular/http";
+import { XHRBackend, Http, RequestOptions, Headers, Response } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class XHRService {
-
-    constructor(private _http: Http) {
-
+export class XHRService extends Http {
+    constructor(backend: XHRBackend, defaultOptions: RequestOptions) {
+        super(backend, defaultOptions);
     }
 
-    request(url: string, opts:any = {method:'GET', data: {}}) {
+    request(url: string, opts:any = {method:'GET', data: {}}): Observable<Response> {
+        return super.request(url, opts).catch((error: Response) => {
+            console.log(error);           
+            return Observable.throw(error);
+        });
+        
         let options: any = {
             method: opts.method,
             // url: url,
@@ -17,8 +22,12 @@ export class XHRService {
         if(opts.method == 'post') {
             options.body = JSON.stringify(opts.data);
         }
-        let httpRequestor = this._http.request(url, options);
-        console.log('httpRequestor:', httpRequestor._subscribe);
+        let httpRequestor = this._http.request(url, new RequestOptions(options));
+        
+        // this._http.request(new Request(options)).toPromise().then((response) => {
+        //     //do something...
+        // });
+        console.log('httpRequestor:', httpRequestor.subscribe);
         
         // return result;
         // return .map(resza=> {
