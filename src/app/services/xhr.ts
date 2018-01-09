@@ -17,8 +17,9 @@ export class XHRService {
         if(opts.method == 'post') {
             options.body = JSON.stringify(opts.data);
         }
-        let httpRequstor = this._http.request(url, options);
-        console.log(XMLHttpRequest);
+        let httpRequestor = this._http.request(url, options);
+        console.log('httpRequestor:', httpRequestor._subscribe);
+        
         // return result;
         // return .map(resza=> {
         //     let _res = res.json();
