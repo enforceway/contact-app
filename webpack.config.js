@@ -25,5 +25,27 @@ module.exports = {
       { test: /\.ts$/, loader: 'ts-loader' },
       { test: /\.css$/, loader: 'style-loader' }
     ]
-  }
+  },
+
+
+
+    devServer: {
+        historyApiFallback: true,
+        // hot: true,
+        inline: true,
+        stats: { colors: true },
+        lazy: false,
+        port: 8000,
+        progress: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                // changeOrigin: true,
+                secure: false,
+                pathRewrite: {'^/api': '/api'}
+            }
+        }
+    }
+
+
 };
