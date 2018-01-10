@@ -9,7 +9,7 @@ export class XHRService {
 
     }
 
-    request(url: string, opts: RequestOptsClass) {
+    request(url: string, opts?: RequestOptsClass) {
         // 如果没有传入可选项
         if(!opts) {
             opts = new RequestOptsClass();
