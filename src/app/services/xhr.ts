@@ -51,7 +51,10 @@ export class XHRService {
         options.search = searchParams;
 
         let httpRequestor = this._http.get(url, new RequestOptions(options));
-        return httpRequestor.toPromise().then((response) => {response.json()}).catch((error) => {console.log(error)});
+        return httpRequestor.toPromise().then((response) => {
+            let res = response.json();
+            return res.data;
+        }).catch((error) => {console.log(error)});
         // httpRequestor.toPromise
         // this._http.request(new Request(options)).toPromise().then((response) => {
         //     //do something...
