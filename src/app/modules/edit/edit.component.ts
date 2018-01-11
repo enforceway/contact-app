@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
-// import contacts from "../../data/contacts";
+import { ContactService } from "../../services/contact.service";
 
 @Component({
   styleUrls: ['app/modules/edit/edit.component.css'],
@@ -11,23 +11,27 @@ import { Location } from "@angular/common";
 export class EditComponent implements OnInit {
     private contact: any;
     private ifEditMode: boolean;
-    constructor(private _location: Location, private _activatedRoute: ActivatedRoute) {
-
+    constructor(private _location: Location,
+                private _activatedRoute : ActivatedRoute, 
+                private _router: Router,
+                private _contactSvc: ContactService) {
     }
     ngOnInit() {
-        // let contactId = this._activatedRoute.params.subscribe((params) => {
-        //     let contactId = params['id'];
-        //     let result = contacts.find(function(item) {
-        //       return item.id == contactId;
-        //     });
-        //     this.ifEditMode = !contactId;
-        //     if(result) {
-    
-        //         this.contact = result;
-        //     } else {
-                
-        //     }
-        // });
+        this.contact = {};
+        let contactId = this._activatedRoute.snapshot.params["id"];
+        if(contactId != null && contactId != undefined) {
+            this.ifEditMode = true;
+        } else {
+            this.ifEditMode = false;
+        }
+        if(this.ifEditMode == true) {
+            this._contactSvc.getContact(contactId).then((data) => {
+                if(data) {
+                    // 如果取到了数值
+                    this.contact = data;
+                }
+            });
+        }
     }
     public submitForm(): void {
       alert(1231);
@@ -35,4 +39,5 @@ export class EditComponent implements OnInit {
     public cancel(): void {
         this._location.back();
     }
+    
 }

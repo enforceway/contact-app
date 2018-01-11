@@ -2,14 +2,14 @@ import { OnInit } from "@angular/core";
 
 export interface RequestOptsIn {
     method: string;
-    param: any;
-    urlParam: Object;
+    param?: any;
+    urlParam?: any;
 }
 export class RequestOptsClass implements RequestOptsIn, OnInit {
 
     method: string;
-    param: Object;
-    urlParam: Object;
+    param: any;
+    urlParam: any;
     constructor() {
 
     }

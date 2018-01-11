@@ -1,4 +1,5 @@
-<header title="operateTitle"></header>
+<contact-header headTitle="新增联系人" *ngIf="ifEditMode == false"></contact-header>
+<contact-header headTitle="修改联系人信息" *ngIf="ifEditMode == true"></contact-header>
 <div class="operate">
     <form #contactForm="ngForm" (ngSubmit)="submitForm()">
         <ul>
@@ -12,7 +13,7 @@
             <li>
                 <label>电话：</label>
                 <p>
-                    <input type="text" value="{{contact.telNum}}" [(ngModel)]="contact.telNum" name="telNum">
+                    <input type="text" value="{{contact.mobile_number}}" [(ngModel)]="contact.mobile_number" name="mobile_number">
                     <i *ngIf="phoneTip" [ngClass]="{green: isPhoneNum, red: !isPhoneNum}"></i>
                 </p>
             </li>
@@ -40,7 +41,8 @@
         </ul>
     </form>
     <div class="btn">
-        <button type="submit" class="fl">保存</button>
+        <button type="submit" class="fl" *ngIf="ifEditMode == true">保存</button>
+        <button type="submit" class="fl" *ngIf="ifEditMode == false">新增</button>
         <button (click)="cancel()" class="fr">取消</button>
     </div>
 </div>

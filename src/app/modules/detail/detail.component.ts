@@ -1,33 +1,34 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router} from "@angular/router";
-// import contacts from "../../data/contacts";
+import { ContactService } from '../../services/contact.service';
 
 @Component({
     styleUrls: ['app/modules/detail/detail.component.css'],
-    selector: 'detail',
+    selector: 'contact-detail',
     templateUrl: 'app/modules/detail/detail.component.html'
 })
 export class DetailComponent implements OnInit, OnDestroy {
-    private detail: any;
+    private contact: any;
     public goToEdit(): void {
-        this._router.navigateByUrl("/edit/" + this.detail.id);
+        this._router.navigateByUrl("/edit/" + this.contact.id);
     }
-
-    constructor(private _activatedRoute : ActivatedRoute, private _router: Router) {
-      
+    constructor(private _activatedRoute : ActivatedRoute, 
+                private _router: Router,
+                private _contactSvc: ContactService) {
     }
-
     ngOnInit() {
-        
+        this.contact = {};
         let contactId = this._activatedRoute.snapshot.params["id"];
-        console.log("contactId:", contactId);
-        // let result = contacts.find(function(item: any) {
-        //     return item.id == contactId;
-        // });
-        // if(result) {
-        //     this.detail = result;
-        // }
-
+        if(!contactId) {
+            alert("缺少参数，跳转到首页");
+            return;
+        }
+        this._contactSvc.getContact(contactId).then((data) => {
+            if(data) {
+                // 如果取到了数值
+                this.contact = data;
+            }
+        });
     }
 
     ngOnDestroy() {

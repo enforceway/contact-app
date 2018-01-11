@@ -14,6 +14,7 @@ const appRoutes: Routes = [
   { path: 'notfound', component: NotFoundComponent },
   { path: 'detail/:id', component: DetailComponent },
   { path: 'edit/:id', component: EditComponent },
+  { path: 'create', component: EditComponent },
   { path: '**', component: NotFoundComponent },
   {
     path: "",

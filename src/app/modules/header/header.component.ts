@@ -4,11 +4,13 @@ import { ActivatedRoute } from "@angular/router";
 
 @Component({
   styleUrls: ['app/modules/header/header.component.css'],
-  selector: 'header',
+  selector: 'contact-header',
   templateUrl: 'app/modules/header/header.component.html'
 })
 export class HeaderComponent implements OnInit {
-    @Input() title: string;
+
+    @Input() actionTitle: string;
+    @Input() headTitle: string;
     @Input() isShowCreateButton: boolean;
     constructor(private _activatedRoute : ActivatedRoute) {
         
@@ -16,4 +18,5 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
         
     }
+
 }

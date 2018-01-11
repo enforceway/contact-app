@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { XHRBackend, Http, RequestOptions, RequestOptionsArgs, Headers, Response, ResponseContentType, RequestMethod, URLSearchParams } from "@angular/http";
 import 'rxjs/add/operator/toPromise';
-import { RequestOptsIn, RequestOptsClass} from "../interfaces/request.opts";
+import { RequestOptsClass, RequestOptsIn} from "../interfaces/request.opts";
 
 @Injectable()
 export class XHRService {
@@ -9,7 +9,7 @@ export class XHRService {
 
     }
 
-    request(url: string, opts?: RequestOptsClass) {
+    request(url: string, opts?: RequestOptsIn) {
         // 如果没有传入可选项
         if(!opts) {
             opts = new RequestOptsClass();
