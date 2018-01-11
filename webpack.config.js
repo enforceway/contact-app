@@ -15,7 +15,7 @@ module.exports = {
     //root: [ path.join(__dirname, 'src') ],
     alias: {
       app: basePath + '/app',
-      shared: basePath + '/app/shared'
+      shared: basePath + '/app/common'
     },
     extensions: ['', '.ts', '.js']
   },
@@ -26,26 +26,21 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader' }
     ]
   },
-
-
-
     devServer: {
         historyApiFallback: true,
-        // hot: true,
+        hot: true,
         inline: true,
         stats: { colors: true },
         lazy: false,
         port: 8000,
+        host: "localhost",
         progress: true,
         proxy: {
-            '/api': {
+            '/api/**': {
                 target: 'http://localhost:3000',
-                // changeOrigin: true,
+                changeOrigin: true,
                 secure: false,
-                pathRewrite: {'^/api': '/api'}
-            }
+            },
         }
     }
-
-
 };

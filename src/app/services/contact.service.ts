@@ -11,7 +11,7 @@ export class ContactService {
     }
 
     getAllContacts() {
-        return this.xhrSvc.request(`/api/getContactList`);
+        return this.xhrSvc.request(`${apiPath}/getContactList`);
         // .assign({
         //     method: 'get'
         // }));

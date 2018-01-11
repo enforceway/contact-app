@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node node_modules/webpack/bin/webpack.js --inline --colors --progress --display-error-details --display-cached",
     "watch": "npm run build -- --watch",
-    "server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --colors --progress --display-error-details --display-cached --port 8000  --content-base src",
+    "server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --colors --progress --display-error-details --display-cached --port 8000  --content-base src",
     "start": "npm run server"
   },
   "license": "MIT",
