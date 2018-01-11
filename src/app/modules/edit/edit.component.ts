@@ -16,6 +16,15 @@ export class EditComponent implements OnInit {
                 private _router: Router,
                 private _contactSvc: ContactService) {
     }
+    public doSave() {
+        this._contactSvc.updateContact({
+            
+        });
+        alert("dosave");
+    }
+    public doAdd() {
+        alert("doAdd");
+    }
     ngOnInit() {
         this.contact = {};
         let contactId = this._activatedRoute.snapshot.params["id"];

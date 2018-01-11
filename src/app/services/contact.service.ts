@@ -23,4 +23,9 @@ export class ContactService {
         return this.xhrSvc.request(`${apiPath}/getContactById`, param);
     }
 
+    updateContact(contactObj: any) {
+        let param: RequestOptsIn = {method: "Get", param: contactObj};
+        return this.xhrSvc.request(`${apiPath}/updateContact`, param);
+    }
+
 }
