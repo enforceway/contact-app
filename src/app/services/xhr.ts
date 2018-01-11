@@ -10,6 +10,7 @@ export class XHRService {
     }
 
     request(url: string, opts?: RequestOptsIn) {
+        console.log(opts);
         // 如果没有传入可选项
         if(!opts) {
             opts = new RequestOptsClass();
@@ -37,7 +38,9 @@ export class XHRService {
         };
 
         // request body params
+        // console.log(opts.param);
         if(RequestMethod[opts.method] == RequestMethod.Post) {
+            // console.log(opts.param);
             options.body = JSON.stringify(opts.param);
         }
 

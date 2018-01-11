@@ -17,9 +17,7 @@ export class EditComponent implements OnInit {
                 private _contactSvc: ContactService) {
     }
     public doSave() {
-        this._contactSvc.updateContact({
-            
-        });
+        this._contactSvc.updateContact(this.contact);
         alert("dosave");
     }
     public doAdd() {
