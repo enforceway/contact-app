@@ -1,4 +1,4 @@
-<a (click)="goToDetail(contact.id)">
+<a [routerLink]="['/detail', contact.id]">
     <img class="icon-head" src="./images/Iverson.jpg">
     <div class="contact-info">
         <label class="contact-name">{{ contact.name }}</label>

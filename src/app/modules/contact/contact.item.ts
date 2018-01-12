@@ -12,9 +12,9 @@ import { Router } from "@angular/router";
 })
 export class ContactItemComponent implements OnInit {
     @Input() contact: any = {};
-    public goToDetail(): void {
-        this._router.navigateByUrl("/detail/" + this.contact.id);
-    }
+    // public goToDetail(): void {
+    //     this._router.navigateByUrl("/detail/" + this.contact.id);
+    // }
     constructor(private _router: Router) {
         
     }
