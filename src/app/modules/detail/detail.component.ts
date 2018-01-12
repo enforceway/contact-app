@@ -29,9 +29,9 @@ export class DetailComponent implements OnInit, OnDestroy {
             return;
         }
         this._contactSvc.getContactWithLikes(contactId).then((data) => {
-            if(data) {
+            if(data.length == 1) {
                 // 如果取到了数值
-                this.contact = data;
+                this.contact = data[0];
             }
         });
     }

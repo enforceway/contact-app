@@ -1,16 +1,25 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from "@angular/router";
+import { ContactService } from '../../services/contact.service';
 
 @Component({
-  styleUrls: ['app/modules/favorites/favorites.component.css'],
-  selector: 'favorites',
-  templateUrl: 'app/modules/favorites/favorites.component.html'
+    styleUrls: ['app/modules/favorites/favorites.component.css'],
+    selector: 'contact-favorites',
+    templateUrl: 'app/modules/favorites/favorites.component.html'
 })
-export class FavoriteComponent {
-  constructor(private _router: Router) {
-    // setTimeout(() => {
-    //   this._router.navigate(["/detail", 1]);
-    // });
-    
-  }
+export class FavoriteComponent implements OnInit {
+    private contacts: Array<any>;
+    constructor(
+        private _router: Router,
+        private _contactSvc: ContactService) {
+    }
+
+    ngOnInit() {
+        this._contactSvc.getFavoriteContacts().then((data) => {
+          if(data) {
+              // 如果取到了数值
+              this.contacts = data;
+          }
+        });
+    }
 }

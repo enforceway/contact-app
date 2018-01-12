@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 
@@ -8,11 +8,15 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: 'app/modules/footer/footer.component.html'
 })
 export class FooterComponent implements OnInit {
-  private isListPage:boolean = true;
+
+  @Input() isListPage:boolean;
+
   constructor(private _activatedRoute : ActivatedRoute) {
     
   }
+
   ngOnInit() {
     
   }
+
 }
