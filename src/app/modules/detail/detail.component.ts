@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "@angular/common";
 import { ContactService } from '../../services/contact.service';
 
 @Component({
@@ -9,6 +10,10 @@ import { ContactService } from '../../services/contact.service';
 })
 export class DetailComponent implements OnInit, OnDestroy {
     private contact: any;
+    public goBackToPrevious(): void {
+        this._location.back();
+    }
+
     public goToEdit(): void {
         this._router.navigateByUrl("/edit/" + this.contact.id);
     }
@@ -17,7 +22,8 @@ export class DetailComponent implements OnInit, OnDestroy {
             this.contact.if_like = data.if_like;
         });
     }
-    constructor(private _activatedRoute : ActivatedRoute, 
+    constructor(private _location: Location,
+                private _activatedRoute : ActivatedRoute, 
                 private _router: Router,
                 private _contactSvc: ContactService) {
     }
