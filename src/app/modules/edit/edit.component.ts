@@ -17,11 +17,14 @@ export class EditComponent implements OnInit {
                 private _contactSvc: ContactService) {
     }
     public doSave() {
-        this._contactSvc.updateContact(this.contact);
-        alert("dosave");
+        this._contactSvc.updateContact(this.contact).then(() => {
+            this._location.back();
+        });
     }
     public doAdd() {
-        alert("doAdd");
+        this._contactSvc.addContact(this.contact).then(() => {
+            this._location.back();
+        });
     }
     ngOnInit() {
         this.contact = {};

@@ -23,9 +23,24 @@ export class ContactService {
         return this.xhrSvc.request(`${apiPath}/getContactById`, param);
     }
 
+    getContactWithLikes(contactId: any) {
+        let param: RequestOptsIn = {method: "Get", urlParam: {id: contactId}};
+        return this.xhrSvc.request(`${apiPath}/getContactWithLikes`, param);
+    }
+
     updateContact(contactObj: any) {
         let param: RequestOptsIn = {method: "Post", param: contactObj};
         return this.xhrSvc.request(`${apiPath}/updateContact`, param);
+    }
+
+    addContact(contactObj: any) {
+        let param: RequestOptsIn = {method: "Post", param: contactObj};
+        return this.xhrSvc.request(`${apiPath}/addContact`, param);
+    }
+
+    setFavorite(contactId: any) {
+        let param: RequestOptsIn = {method: "Post", param: {contactId: contactId}};
+        return this.xhrSvc.request(`${apiPath}/setFavorite`, param);
     }
 
 }

@@ -12,6 +12,11 @@ export class DetailComponent implements OnInit, OnDestroy {
     public goToEdit(): void {
         this._router.navigateByUrl("/edit/" + this.contact.id);
     }
+    public collectTheContact(): void {
+        this._contactSvc.setFavorite(this.contact.id).then((data) => {
+            this.contact.if_like = data.if_like;
+        });
+    }
     constructor(private _activatedRoute : ActivatedRoute, 
                 private _router: Router,
                 private _contactSvc: ContactService) {
@@ -23,7 +28,7 @@ export class DetailComponent implements OnInit, OnDestroy {
             alert("缺少参数，跳转到首页");
             return;
         }
-        this._contactSvc.getContact(contactId).then((data) => {
+        this._contactSvc.getContactWithLikes(contactId).then((data) => {
             if(data) {
                 // 如果取到了数值
                 this.contact = data;

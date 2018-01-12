@@ -6,7 +6,7 @@
         <div class="name-and-icon">
             <img src="./images/Iverson.jpg">
             <span class="contact-name">
-                {{ contact.name }}<i [ngClass]="{collect: contact.collection == 0, collected: contact.collection == 1}" (click)="collectTheContact()"></i>
+                {{ contact.name }}<i [ngClass]="{collect: contact.if_like == 0 || contact.if_like == null, collected: contact.if_like == 1}" (click)="collectTheContact()"></i>
             </span>
         </div>
     </div>
