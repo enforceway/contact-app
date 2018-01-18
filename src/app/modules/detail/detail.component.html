@@ -1,8 +1,8 @@
 <div class="detail-contain">
     <div class="header-detail">
         <a (click)="goBackToPrevious()" class="back-to-list"><i class="icon-back"></i>所有联系人</a>
-        <a class="edit" (click)="goToEdit()">编辑</a>
-
+        <a class="edit" [routerLink]="['/edit', this.contact.id]">编辑</a>
+        <!-- (click)="goToEdit()"  -->
         <div class="name-and-icon">
             <img src="./images/Iverson.jpg">
             <span class="contact-name">

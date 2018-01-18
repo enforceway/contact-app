@@ -8,8 +8,10 @@ import { AnnotationComponent } from "../modules/annotation";
 
 
 
+
 import { EditComponent } from "../modules/edit/edit.component";
 import { RouterModule, Routes } from '@angular/router';
+import { CanActivateGuard } from "../interceptor/loginCan";
 
 
 const appRoutes: Routes = [
@@ -36,7 +38,7 @@ const appRoutes: Routes = [
         outlet: "aux"
       }]
   },
-  { path: 'edit/:id', component: EditComponent },
+  { path: 'edit/:id', component: EditComponent, canActivate: [CanActivateGuard] },
   { path: 'create', component: EditComponent },
   { path: '**', component: NotFoundComponent },
   {

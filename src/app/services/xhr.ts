@@ -10,7 +10,6 @@ export class XHRService {
     }
 
     request(url: string, opts?: RequestOptsIn) {
-        console.log(opts);
         // 如果没有传入可选项
         if(!opts) {
             opts = new RequestOptsClass();
