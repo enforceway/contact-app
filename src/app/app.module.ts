@@ -8,6 +8,7 @@ import appRoutes from "./config/routes";
 import declartions from "./config/declaration.list";
 import { XHRService } from "./services/xhr";
 import { ContactService } from "./services/contact.service";
+import { AlbumService } from "./services/album.service";
 import { HttpModule } from '@angular/http';
 
 let routesRef = RouterModule.forRoot(appRoutes, {useHash: true});
@@ -17,7 +18,7 @@ let routesRef = RouterModule.forRoot(appRoutes, {useHash: true});
   declarations: declartions,
   imports: [BrowserModule, routesRef, FormsModule, HttpModule],
   bootstrap: [AppComponent],
-  providers   : [ContactService, XHRService]
+  providers   : [ContactService, XHRService, AlbumService]
 })
 export class AppModule {
 }

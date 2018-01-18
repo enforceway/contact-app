@@ -9,6 +9,9 @@ import { HeaderComponent } from "../modules/header/header.component";
 import { ContactItemComponent } from "../modules/contact/contact.item";
 import { EditComponent } from "../modules/edit";
 import { PhonePipe } from "../pipes/phone.pipe";
+import { AlbumComponent } from "../modules/album/album.component";
+import { AnnotationComponent } from "../modules/annotation/annotation.component";
+
 
 export default [
     PhonePipe,
@@ -21,5 +24,7 @@ export default [
     FooterComponent,
     HeaderComponent,
     ContactItemComponent,
-    EditComponent
+    EditComponent,
+    AlbumComponent,
+    AnnotationComponent
 ]
