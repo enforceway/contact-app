@@ -16,6 +16,11 @@ export class EditComponent implements OnInit {
                 private _router: Router,
                 private _contactSvc: ContactService) {
     }
+    public isModified(): boolean {
+        console.log('is modiefied is called');
+        return true;
+    }
+
     public doSave() {
         this._contactSvc.updateContact(this.contact).then(() => {
             this._location.back();
