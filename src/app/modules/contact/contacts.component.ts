@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     //this._router.navigate(["/"]);
   }
   ngOnInit() {
-    this._contactSvc.getAllContacts().then((allContacts) => {
+    this._contactSvc.getAllContacts().subscribe((allContacts) => {
         this.contacts = allContacts;
     });
     // .subscribe((data: any) => {

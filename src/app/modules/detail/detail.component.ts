@@ -18,7 +18,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         this._router.navigateByUrl("/edit/" + this.contact.id);
     }
     public collectTheContact(): void {
-        this._contactSvc.setFavorite(this.contact.id).then((data) => {
+        this._contactSvc.setFavorite(this.contact.id).subscribe((data) => {
             this.contact.if_like = data.if_like;
         });
     }
@@ -34,7 +34,7 @@ export class DetailComponent implements OnInit, OnDestroy {
             alert("缺少参数，跳转到首页");
             return;
         }
-        this._contactSvc.getContactWithLikes(contactId).then((data) => {
+        this._contactSvc.getContactWithLikes(contactId).subscribe((data) => {
             if(data.length == 1) {
                 // 如果取到了数值
                 this.contact = data[0];

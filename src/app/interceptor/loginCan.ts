@@ -19,15 +19,13 @@ export class CanActivateGuard implements CanActivate {
         state: RouterStateSnapshot
     ) {
         return new Observable<boolean>((observer: any) => {
-            this._xhrSvc.request(`${apiPath}/ifLoginActive`).then((data) => {
+            this._xhrSvc.request(`${apiPath}/ifLoginActive`).subscribe((data) => {
                 if(data && data.active == true) {
                     observer.next(true);
                 } else {
                     observer.next(false);
                 }
                 observer.complete();
-            }).catch((error) => {
-                observer.error(false);
             });
         });
     }

@@ -1,12 +1,18 @@
 import { Injectable } from "@angular/core";
 import { XHRBackend, Http, RequestOptions, RequestOptionsArgs, Headers, Response, ResponseContentType, RequestMethod, URLSearchParams } from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+// import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Rx';
 import { RequestOptsClass, RequestOptsIn} from "../interfaces/request.opts";
 
 @Injectable()
 export class XHRService {
     constructor(private _http: Http) {
 
+    }
+
+    extraDataHandle(response: Response) {
+        let res = response.json();
+        return res.data;
     }
 
     request(url: string, opts?: RequestOptsIn) {
@@ -53,36 +59,11 @@ export class XHRService {
         options.search = searchParams;
 
         let httpRequestor = this._http.get(url, new RequestOptions(options));
-        return httpRequestor.toPromise().then((response) => {
-            let res = response.json();
-            return res.data;
-        }).catch((error) => {console.log(error)});
-        // httpRequestor.toPromise
-        // this._http.request(new Request(options)).toPromise().then((response) => {
-        //     //do something...
-        // });
-        
-        // return result;
-        // return .map(resza=> {
-        //     let _res = res.json();
-        //     if(opts.id){
-        //         for(let i=0; i<_res.length; i++){
-        //             if(_res[i].id == opts.id){
-        //                 _res = _res[i];
-        //             }
-        //         }
-        //     }
-        //     if(opts.collection){
-        //         let temp:any = [];
-        //         for(let i=0; i<_res.length; i++){
-        //             if(_res[i].collection == opts.collection){
-        //                 temp.push(_res[i]);
-        //             }
-        //         }
-        //         _res = temp;
-        //     }
-        //     return _res;
-        // })h
+        return httpRequestor.map(this.extraDataHandle).catch((error) => {
+            let errMsg = error.message? error.message: error.status? `$(error.status) - $(error.statusText)` : `Server error`;
+            console.error(errMsg);
+            return Observable.throw(errMsg);
+        });
     }
 
 }

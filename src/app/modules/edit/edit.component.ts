@@ -22,12 +22,12 @@ export class EditComponent implements OnInit {
     }
 
     public doSave() {
-        this._contactSvc.updateContact(this.contact).then(() => {
+        this._contactSvc.updateContact(this.contact).subscribe(() => {
             this._location.back();
         });
     }
     public doAdd() {
-        this._contactSvc.addContact(this.contact).then(() => {
+        this._contactSvc.addContact(this.contact).subscribe(() => {
             this._location.back();
         });
     }
@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
             this.ifEditMode = false;
         }
         if(this.ifEditMode == true) {
-            this._contactSvc.getContact(contactId).then((data) => {
+            this._contactSvc.getContact(contactId).subscribe((data) => {
                 if(data) {
                     // 如果取到了数值
                     this.contact = data;

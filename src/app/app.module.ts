@@ -12,6 +12,7 @@ import { AlbumService } from "./services/album.service";
 import { HttpModule } from '@angular/http';
 import { CanActivateGuard } from './interceptor/loginCan';
 import { DeCanActivateGuard } from './interceptor/loginDeCan';
+import providers from "./config/provider.list";
 
 let routesRef = RouterModule.forRoot(appRoutes, {useHash: true});
 
@@ -20,7 +21,7 @@ let routesRef = RouterModule.forRoot(appRoutes, {useHash: true});
     declarations: declartions,
     imports: [BrowserModule, routesRef, FormsModule, HttpModule],
     bootstrap: [AppComponent],
-    providers   : [ContactService, XHRService, AlbumService, CanActivateGuard, DeCanActivateGuard]
+    providers: providers
 })
 export class AppModule {
 }

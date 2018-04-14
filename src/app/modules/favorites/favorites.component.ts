@@ -15,7 +15,7 @@ export class FavoriteComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._contactSvc.getFavoriteContacts().then((data) => {
+        this._contactSvc.getFavoriteContacts().subscribe((data) => {
           if(data) {
               // 如果取到了数值
               this.contacts = data;
