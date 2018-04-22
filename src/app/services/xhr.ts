@@ -3,10 +3,12 @@ import { XHRBackend, Http, RequestOptions, RequestOptionsArgs, Headers, Response
 // import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
 import { RequestOptsClass, RequestOptsIn} from "../interfaces/request.opts";
+import { InterceptorService } from 'ng2-interceptors';
 
 @Injectable()
 export class XHRService {
-    constructor(private _http: Http) {
+
+    constructor(private _http: Http) { //InterceptorService
 
     }
 

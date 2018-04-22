@@ -12,7 +12,6 @@ import { PhonePipe } from "../pipes/phone.pipe";
 import { AlbumComponent } from "../modules/album/album.component";
 import { AnnotationComponent } from "../modules/annotation/annotation.component";
 
-
 export default [
     PhonePipe,
     AppComponent,
@@ -26,5 +25,5 @@ export default [
     ContactItemComponent,
     EditComponent,
     AlbumComponent,
-    AnnotationComponent
+    AnnotationComponent,
 ]

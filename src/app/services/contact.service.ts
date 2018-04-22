@@ -28,7 +28,7 @@ export class ContactService {
         if(!contactId) {
             delete param.urlParam.id;
         }
-        return this.xhrSvc.request(`${apiPath}/getContactWithLikes`, param);
+        return this.xhrSvc.request(`${apiPath}/getContactWithLikes/${contactId}`, param);
     }
 
     getFavoriteContacts() {

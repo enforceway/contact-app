@@ -1,7 +1,8 @@
-import { XHRConnectionBackend } from "../interceptor/httpInterceptorBackend";
-import { RequestOptions, Http } from "@angular/http";
-
-export function XHRFactory(xhrConnectionBackend: XHRConnectionBackend, requestOpts: RequestOptions): Http {
-    debugger;
-    return new Http(xhrConnectionBackend, requestOpts);
+import { InterceptorService } from 'ng2-interceptors';
+import { XHRBackend, RequestOptions } from '@angular/http';
+ 
+export function interceptorFactory(xhrBackend: XHRBackend, requestOptions: RequestOptions){
+  let service = new InterceptorService(xhrBackend, requestOptions);
+  // Add interceptors here with service.addInterceptor(interceptor)
+  return service;
 }
