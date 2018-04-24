@@ -16,7 +16,7 @@ export default [
     AlbumService,
     CanActivateGuard,
     DeCanActivateGuard,
-    // ServerURLInterceptor,
+    ServerURLInterceptor,
     // {
     //     provide: InterceptorService,
     //     useFactory: interceptorFactory,

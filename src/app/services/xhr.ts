@@ -8,7 +8,7 @@ import { InterceptorService } from 'ng2-interceptors';
 @Injectable()
 export class XHRService {
 
-    constructor(private _http: Http) { //InterceptorService
+    constructor(private _http: InterceptorService) { //InterceptorService
 
     }
 
